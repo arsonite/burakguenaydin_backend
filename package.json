@@ -1,0 +1,16 @@
+{
+  "name": "burakguenaydin.de-backend",
+  "version": "1.0.0",
+  "description": "The backend for my website",
+  "main": "index.js",
+  "scripts": { 
+    "start": "node index.js"
+  },
+  "keywords": [
+    "backend",
+    "burakguenaydin",
+    "website"
+  ],
+  "author": "arsonite",
+  "license": "ISC"
+}
