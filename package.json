@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The backend for my website",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "start": "node index.js"
   },
   "keywords": [
@@ -12,5 +12,12 @@
     "website"
   ],
   "author": "arsonite",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "mongoose": "^5.4.14",
+    "nodemon": "^1.18.10",
+    "winston": "^3.2.1"
+  }
 }
