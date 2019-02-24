@@ -4,10 +4,9 @@ const express = require('express');
 const app = express();
 
 /* Routes requirements */
-const languages = require('../routes/languages');
+const languages = require('./routes/languages');
 
 /* Bodyparser-boilerplate */
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
