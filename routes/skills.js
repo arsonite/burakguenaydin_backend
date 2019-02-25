@@ -4,12 +4,11 @@ const router = express.Router();
 
 const Skill = require('../models/skill');
 
-/* REST-API GET-request for languages */
 router.get('/', async (req, res) => {
-  res.send(await Skill.find());
+  const skills = await Skill.find();
+  res.send(skills.sort((a, b) => (a.proficiency > b.proficiency ? 1 : -1)));
 });
 
-/* REST-API POST-request for languages */
 router.post('/', async (req, res) => {
   const skill = new Skill({
     name: req.body.name,
