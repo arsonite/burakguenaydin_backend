@@ -1,5 +1,7 @@
 /* Boilerplate requirements */
 const winston = require('winston');
+const mongoose = require('mongoose');
+const config = require('config');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -13,6 +15,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /* Middlewares */
+
+/* Connecting mongoose to database */
+const db = config.get('data');
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    server: {
+      // sets how many times to try reconnecting
+      reconnectTries: Number.MAX_VALUE,
+      // sets the delay between every retry (milliseconds)
+      reconnectInterval: 1000
+    }
+  })
+  .then(() => winston.info(`Connected to ${db}`));
 
 /* Routes */
 app.use('/backend/languages', languages);

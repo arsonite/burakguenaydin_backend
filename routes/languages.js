@@ -3,11 +3,11 @@ const express = require('express');
 
 const router = express.Router();
 
-const { Language } = require('../models/language');
+const Language = require('../models/language');
 
 /* REST-API GET-request for languages */
-router.get('/', (req, res) => {
-  res.send(Language.find());
+router.get('/', async (req, res) => {
+  res.send(await Language.find());
 });
 
 router.post('/', (req, res) => {
