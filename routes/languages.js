@@ -7,10 +7,11 @@ const Language = require('../models/language');
 
 /* REST-API GET-request for languages */
 router.get('/', async (req, res) => {
-  res.send(await Language.find());
+  const languages = await Language.find();
+  res.send(languages);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   //const { error } = validate(req.body);
   //if (error) return res.status(400).send(error.details[0].message);
   const language = new Language({
@@ -18,7 +19,7 @@ router.post('/', (req, res) => {
     proficiency: req.body.proficiency,
     projects: req.body.projects
   });
-  language.save();
+  await language.save();
 
   res.status(201).send(language);
 });
