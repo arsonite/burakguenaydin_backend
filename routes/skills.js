@@ -6,7 +6,8 @@ const Skill = require('../models/skill');
 
 router.get('/', async (req, res) => {
   const skills = await Skill.find();
-  res.send(skills.sort((a, b) => (a.proficiency > b.proficiency ? 1 : -1)));
+  /* Descending sort */
+  res.send(skills.sort((a, b) => (a.proficiency < b.proficiency ? 1 : -1)));
 });
 
 router.post('/', async (req, res) => {
