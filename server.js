@@ -3,6 +3,7 @@ const winston = require('winston');
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /* Middlewares */
+app.use(cors());
 
 /* Routes */
 app.use('/backend/skills', skills);
