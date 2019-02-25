@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 /* Middlewares */
 
 /* Connecting mongoose to database */
-const db = 'mongodb://localhost:27017/data';
+//127.0.0.1:
+const db = 'mongodb://0.0.0.0:27017/data';
 mongoose
   .connect(db, {
     useNewUrlParser: true,
