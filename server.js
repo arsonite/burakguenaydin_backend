@@ -10,17 +10,7 @@ const app = express();
 /* Connecting mongoose to database */
 //127.0.0.1:
 const db = 'mongodb://0.0.0.0:27017/data';
-mongoose
-  .connect(db, {
-    useNewUrlParser: true,
-    server: {
-      // sets how many times to try reconnecting
-      reconnectTries: Number.MAX_VALUE,
-      // sets the delay between every retry (milliseconds)
-      reconnectInterval: 1000
-    }
-  })
-  .then(() => winston.info(`Connected to ${db}`));
+mongoose.connect(db).then(() => winston.info(`Connected to ${db}`));
 
 /* Routes requirements */
 const skills = require('./routes/skills');
