@@ -1,22 +1,26 @@
-const { Language } = require('../models/language');
+const winston = require('winston');
 const express = require('express');
+
 const router = express.Router();
 
+const { Language } = require('../models/language');
+
 /* REST-API GET-request for languages */
-router.get('/', async (req, res) => {
-  res.send(await Language.find());
+router.get('/', (req, res) => {
+  winston.info(req);
+  res.send(Language.find());
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   //const { error } = validate(req.body);
   //if (error) return res.status(400).send(error.details[0].message);
-
+  winston.info(req);
   const language = new Language({
     name: req.body.name,
     proficiency: req.body.proficiency,
     projects: req.body.projects
   });
-  await language.save();
+  language.save();
 
   res.status(201).send(language);
 });

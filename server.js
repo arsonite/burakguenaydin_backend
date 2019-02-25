@@ -33,5 +33,6 @@ app.use((err, req, res, next) => {
 
 /* Starting up server on port 3000 */
 const port = process.env.PORT || '3000';
-app.listen(port);
-console.log(`Backend is now listening on port: ${port}`);
+app.listen(port, () => {
+  winston.info(`Server running on port: ${port}`);
+});
