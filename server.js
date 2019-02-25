@@ -22,7 +22,7 @@ mongoose
   .then(() => winston.info(`Connected to ${db}`));
 
 /* Routes requirements */
-const languages = require('./routes/languages');
+const skills = require('./routes/skills');
 
 /* Bodyparser-boilerplate */
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 /* Middlewares */
 
 /* Routes */
-app.use('/backend/languages', languages);
+app.use('/backend/skills', skills);
 
 /* catch all 400 */
 app.use((err, req, res, next) => {
