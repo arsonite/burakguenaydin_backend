@@ -6,12 +6,17 @@ const router = express.Router();
 const Language = require('../models/language');
 
 /* REST-API GET-request for languages */
-router.get('/', async (req, res) => {
-  const languages = await Language.find();
-  res.send(languages);
+router.get('/', (req, res) => {
+  Language.find()
+    .then(languages => {
+      res.send({ languages });
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   //const { error } = validate(req.body);
   //if (error) return res.status(400).send(error.details[0].message);
   const language = new Language({
@@ -19,7 +24,7 @@ router.post('/', async (req, res) => {
     proficiency: req.body.proficiency,
     projects: req.body.projects
   });
-  await language.save();
+  language.save();
 
   res.status(201).send(language);
 });
