@@ -6,9 +6,9 @@ const router = express.Router();
 const { Language } = require('../models/language');
 
 /* REST-API GET-request for languages */
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   winston.info(req);
-  res.send(Language.find());
+  res.send(await Language.find());
 });
 
 router.post('/', (req, res) => {
