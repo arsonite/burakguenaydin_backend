@@ -1,4 +1,3 @@
-const winston = require('winston');
 const express = require('express');
 
 const router = express.Router();
@@ -14,9 +13,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const skill = new Skill({
     name: req.body.name,
-    proficiency: req.body.name.proficiency,
-    projects: req.body.name.projects,
-    language: req.body.name.language
+    proficiency: req.body.proficiency,
+    proficiencies: req.body.proficiencies,
+    projects: req.body.projects,
+    language: req.body.language
   });
   await skill.save();
 
