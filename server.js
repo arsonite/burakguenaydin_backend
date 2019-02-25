@@ -6,15 +6,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-/* Routes requirements */
-const languages = require('./routes/languages');
-
-/* Bodyparser-boilerplate */
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-/* Middlewares */
-
 /* Connecting mongoose to database */
 //127.0.0.1:
 const db = 'mongodb://0.0.0.0:27017/data';
@@ -29,6 +20,15 @@ mongoose
     }
   })
   .then(() => winston.info(`Connected to ${db}`));
+
+/* Routes requirements */
+const languages = require('./routes/languages');
+
+/* Bodyparser-boilerplate */
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+/* Middlewares */
 
 /* Routes */
 app.use('/backend/languages', languages);
