@@ -23,7 +23,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
-  timestamps: { created: 'created', changed: 'changed' }
+  timestamps: {
+    created: {
+      type: String
+    },
+    changed: {
+      type: String
+    }
+  }
 });
 
 /* Adding method to user to generate JWT-Web-Token */
