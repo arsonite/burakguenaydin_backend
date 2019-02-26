@@ -14,16 +14,7 @@ router.post('/login', async (req, res) => {
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) return res.status(400).send('Password did not match.');
 
-  res.send(
-    jwt.sign(
-      {
-        _id: user._id,
-        username: user.username,
-        admin: user.admin
-      },
-      config.get('jwtPrivateKey')
-    )
-  );
+  res.send(user.JWTAuthToken());
 });
 
 module.exports = router;

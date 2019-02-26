@@ -12,9 +12,15 @@ mongoose.connect(db).then(() => {
   console.log(`Connected mongoose with database on ${db}.`);
 });
 
+/* Looking if environmental variable was set */
+if (!config.get('jwtPrivateKey')) {
+  throw new Error('FATAL ERROR: jwtPrivateKey is not defined.');
+}
+
 /* Routes requirements */
 const skills = require('./routes/skills');
 const users = require('./routes/users');
+const authentification = require('./routes/authentification');
 
 /* Bodyparser-boilerplate */
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,6 +32,7 @@ app.use(cors());
 /* Routes */
 app.use('/backend/skills', skills);
 app.use('/backend/users', users);
+app.use('/backend', authentification);
 
 /* catch all 400 */
 app.use((err, req, res, next) => {
