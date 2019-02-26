@@ -14,6 +14,7 @@ mongoose.connect(db).then(() => {
 
 /* Routes requirements */
 const skills = require('./routes/skills');
+const users = require('./routes/users');
 
 /* Bodyparser-boilerplate */
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use(cors());
 
 /* Routes */
 app.use('/backend/skills', skills);
+app.use('/backend/users', users);
 
 /* catch all 400 */
 app.use((err, req, res, next) => {
