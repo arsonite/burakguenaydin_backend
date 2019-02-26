@@ -10,6 +10,11 @@ router.get('/', async (req, res) => {
   res.send(users);
 });
 
+router.get('/current', async (req, res) => {
+  const users = await User.find();
+  res.send(users);
+});
+
 router.post('/', async (req, res) => {
   const user = new User({
     email: req.body.email,
@@ -37,6 +42,16 @@ router.post('/', async (req, res) => {
     .send(user);
 
   res.status(201).send(user);
+});
+
+router.patch('/', async (req, res) => {
+  const users = await User.find();
+  res.send(users);
+});
+
+router.delete('/', async (req, res) => {
+  const users = await User.find();
+  res.send(users);
 });
 
 module.exports = router;
